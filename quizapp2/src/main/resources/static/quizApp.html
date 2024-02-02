@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My webpage</title>
+    <link rel="stylesheet" href="quizApp.css">
+    <script src="quizLogic.js" defer></script>
+</head>
+<body>
+<header> <h1>Interactive Quiz</h1></header>
+<main>
+        <p id="question">Which animal is best?</p>
+
+        <form >
+            <input id="answer1" id="r1" type="radio" name="choice" value="1">
+            <label for="answer1" id="at1">Dog</label><br/>
+            <input id="answer2" id="r2" type="radio" name="choice" value="2" checked>
+            <label for="answer2" id="at2">Cat</label><br/>
+            <input id="answer3" type="radio" name="choice" value="3">
+            <label for="answer3" id="at3">Duck</label><br/>
+            <input id="answer4" type="radio" name="choice" value="4">
+            <label for="answer4" id="at4">Snake</label><br/>
+
+           
+        <button id="submit" type="submit">Submit Quiz</button>
+        </form>
+</main>
+<footer>
+    <nav>
+        <a id="prev" href="#">LAST</a>
+        <a id="next" href="#">NEXT</a> 
+    </nav>
+</footer>
+    
+</body>
+</html>
