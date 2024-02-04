@@ -37,6 +37,8 @@ var i = 0;
 
 function updateQuestion(k)
 {
+    var QuestionI = document.getElementById("qn");
+    QuestionI.innerHTML =  "Question "+ (i+1) + "/3:";
 
     var QuestionI = document.getElementById("question");
     QuestionI.innerHTML = Questions[k].Question;
@@ -55,8 +57,7 @@ function updateQuestion(k)
 }
 
 function updateChoice()
-{ 
-    console.log(ans[i]);
+{
     if(ans[i]== "1")
     {
         var Check = document.getElementById("answer1");
@@ -77,6 +78,26 @@ function updateChoice()
         var Check = document.getElementById("answer4");
         Check.checked = true;
     }
+}
+
+function reset()
+{
+    for(var k = 0; k < max; k++)
+    {
+        ans[k]=0;
+    }
+    // hideQuestion();
+    // unhideTable();
+    // setPoints();
+    // unhideScore(score);
+    // toggleRestart();
+    openScore();
+    resetPoints();
+    toggleRestart();
+    hideTable();
+    unhideQuestion();
+    i = 0;
+    updateQuestion(i);
 }
 
 function getChoice()
@@ -128,17 +149,18 @@ let closeAlert = function()
         ele.style.display = 'none';
         return false;
 }
-let openLast = function()
+let restoreButton = function()
 {
-    var ele = document.getElementById('lastQ');
-        ele.style.display = 'block';
-        return true;
-}
-let closeLast = function()
-{
-    var ele = document.getElementById('lastQ');
-        ele.style.display = 'none';
-        return false;
+    var next = document.getElementById('next');
+    var prev = document.getElementById('prev');
+    if( next.style.display == 'none')
+    {
+        next.style.display = 'block'
+    }
+    if( prev.style.display == 'none')
+    {
+        prev.style.display = 'block'
+    }
 }
 
 let go_next = function (evt)
@@ -165,12 +187,6 @@ let go_next = function (evt)
             //meassage to choose answer before proceeding
         }
     }
-    else
-    {
-        
-    }
-    
-    
 }
 
 let go_prev = function (evt)
@@ -186,7 +202,16 @@ let go_prev = function (evt)
             i = i - 1;
             updateQuestion(i);
             updateChoice();
-        }    
+            if (Alerted)
+            {
+                Alerted = closeAlert();
+            }
+        }
+        else
+        { 
+            Alerted = openAlert();
+            //meassage to choose answer before proceeding
+        }
     }
 }
 
@@ -217,7 +242,6 @@ function getTextAns(iter,num)
 
 let setStats = function()
 {
-    console.log("setStats called")
     Qn = 0;
     iterator = 0;
 
@@ -244,7 +268,10 @@ let Allchosen = function()
 }
 
 let hideQuestion = function()
-{ console.log("hidecalled")
+{ 
+    var N = document.getElementById("qn");
+    N.style.display = 'none';
+
     var All = document.getElementById("allQ");
     All.style.display = 'none';
 
@@ -259,11 +286,56 @@ let hideQuestion = function()
     Submit.style.display = 'none' ;
 }
 
+let unhideQuestion = function()
+{
+    var N = document.getElementById("qn");
+    N.style.display = 'block';
+
+    var All = document.getElementById("allQ");
+    All.style.display = 'block';
+
+    var QuestionI = document.getElementById("question");
+    QuestionI.style.display = 'block';
+
+    var Submit = document.getElementById("submit");
+    Submit.style.display = 'block' ;
+    var Submit = document.getElementById("prev");
+    Submit.style.display = 'block' ;
+    var Submit = document.getElementById("next");
+    Submit.style.display = 'block' ;
+}
+
 let unhideTable = function()
 {
     var table = document.getElementById("t");
     table.style.display = 'block';
+
+    var table = document.getElementById("infotable");
+    table.style.display = 'block';
+    var table = document.getElementById("t2");
+    table.style.display = 'block';
+    var table = document.getElementById("t3");
+    table.style.display = 'block';
+    var table = document.getElementById("t4");
+    table.style.display = 'block';
 }
+
+let hideTable = function()
+{
+    var table = document.getElementById("t");
+    table.style.display = 'none';
+
+    var table = document.getElementById("infotable");
+    table.style.display = 'none';
+    var table = document.getElementById("t2");
+    table.style.display = 'none';
+    var table = document.getElementById("t3");
+    table.style.display = 'none';
+    var table = document.getElementById("t4");
+    table.style.display = 'none';
+}
+
+
 let setPoints = function()
 {
     if (ans[0] == c_ans[0])
@@ -282,13 +354,41 @@ let setPoints = function()
         p.innerHTML = 1;
     }
 }
+let resetPoints = function()
+{
+        var p = document.getElementById("points1");
+        p.innerHTML = 0;
+
+        var p = document.getElementById("points2");
+        p.innerHTML = 0;
+ 
+        var p = document.getElementById("points3");
+        p.innerHTML = 0;
+    
+}
 
 let unhideScore = function(score)
 {
-    console.log("unhidecalled");
     var All = document.getElementById("finalscore");
     All.innerHTML = "Final Score: " + score + "/3";
     All.style.display = 'block';
+}
+let openScore = function()
+{
+    var All = document.getElementById("finalscore");
+    All.style.display = 'none';
+}
+let toggleRestart = function()
+{
+    var R = document.getElementById("Restart");
+    if(R.style.display == 'block')
+    {
+        R.style.display = 'none';
+    }
+    else
+    {
+        R.style.display = 'block'
+    }
 }
 
 let final = function(evt)
@@ -313,23 +413,20 @@ let final = function(evt)
                 }
                
             }
-
+            if (Alerted)
+            {
+                Alerted = closeAlert();
+            }
             hideQuestion();
             unhideTable();
             setPoints();
             unhideScore(score);
-            
-   
-
-    //need a table saying which answers are correc which are not
+            toggleRestart();
+            highlightTable();
 
 }
 
 
-    // var Check = document.getElementById("answer1");
-    // Check.checked = true;
-
-//document.querySelector("#form").addEventListener("submit", go_next);
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.querySelector("form");
     if (form) {
@@ -338,8 +435,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         console.error("Form not found");
     }
 });
-
-//document.querySelector("#next").addEventListener("click", go_next)
 
  document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.querySelector("#next");
@@ -354,6 +449,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.querySelector("#prev");
     if (form) {
         form.addEventListener("click", go_prev);
+    } else {
+        console.error("Form not found");
+    }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.querySelector("#Restart");
+    if (form) {
+        form.addEventListener("click", reset);
     } else {
         console.error("Form not found");
     }
