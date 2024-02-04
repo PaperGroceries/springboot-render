@@ -27,7 +27,7 @@
         <button id="submit" type="submit">Submit Quiz</button>
         </form>
         <table id="t" hidden >
-            <tr><th>Question</th><th>Your Answer</th><th>Correct answer</th><th>Points</th></tr>
+            <tr><th>Question</th><th>Your Answer   </th><th>Correct Answer   </th><th>Points</th></tr>
             <tr><td>Which animal is best?</td><td id="ya1">Dog</td><td>Dog</td><td id="points1">0</td></tr>
             <tr><td>What do dogs like to eat?</td><td id="ya2">Dog</td><td>Meat</td><td id="points2">0</td></tr>
             <tr><td>What is food?</td><td id="ya3">Dog</td><td>Sandwich</td><td id="points3">0</td></tr>
@@ -36,27 +36,35 @@
         <p id="needChoice" hidden>Please select an answer before going to the next or previous question</p>
        
         <div id="infotable" hidden>
-        <table id="t2" hidden>
-            <tr><th>Question1: Which animal is best?</th></tr>
-            <tr><td id="1">Dog</td></tr>
-            <tr><td id="2">Cat</td></tr>
-            <tr><td id="3">Duck</td></tr>
-            <tr><td id="4">Snake</td></tr>
-        </table>
-        <table id="t3" hidden>
-            <tr><th >Question2: What do dogs like to eat?</th></tr>
-            <tr><td id="5">Meat</td></tr>
-            <tr><td id="6">Plastic</td></tr>
-            <tr><td id="7">Chocolate</td></tr>
-            <tr><td id="8">Electricity</td></tr>
-        </table>
-        <table id="t4" hidden>
-            <tr><th >Question3: What is food?</th></tr>
-            <tr><td id="9">Game controller</td></tr>
-            <tr><td id="10">Door bell</td></tr>
-            <tr><td id="11">Jacket</td></tr>
-            <tr><td id="12">Sandwich</td></tr>
-        </table>
+            <ul class="questions-list" id="t2" hidden>
+                <li><span>Question1: Which animal is best?</span></li>
+                <ul class="answer-list">
+                    <li>Dog</li>
+                    <li>Cat</li>
+                    <li>Duck</li>
+                    <li>Snake</li>
+                </ul>
+            </ul>
+            
+            <ul class="questions-list" id="t3" hidden>
+                <li><span>Question2: What do dogs like to eat?</span></li>
+                <ul class="answer-list">
+                    <li>Meat</li>
+                    <li>Plastic</li>
+                    <li>Chocolate</li>
+                    <li>Electricity</li>
+                </ul>
+            </ul>
+            
+            <ul class="questions-list" id="t4" hidden>
+                <li><span>Question3: What is food?</span></li>
+                <ul class="answer-list">
+                    <li>Game controller</li>
+                    <li>Door bell</li>
+                    <li>Jacket</li>
+                    <li>Sandwich</li>
+                </ul>
+            </ul>
         </div>
         
         <p id="finalscore" hidden>SS</p>
