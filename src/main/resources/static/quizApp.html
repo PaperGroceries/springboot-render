@@ -12,7 +12,7 @@
 <main>
         <p id="question">Which animal is best?</p>
 
-        <form >
+        <form id="allQ" >
             <input id="answer1" type="radio" name="choice" value="1">
             <label for="answer1" id="at1">Dog</label><br/>
             <input id="answer2" type="radio" name="choice" value="2" >
@@ -25,19 +25,22 @@
            
         <button id="submit" type="submit">Submit Quiz</button>
         </form>
-        <table id="t" >
-            <tr><th>Your Answer</th><th>Correct answer</th><th>Points recieved</th></tr>
-            <tr><td id="ya1">Dog</td><td>Dog</td><td id="points1">0</td></tr>
-            <tr><td id="ya2">Dog</td><td>Meat</td><td id="points2">0</td></tr>
-            <tr><td id="ya3">Dog</td><td>Sandwich</td><td id="points3">0</td></tr>
+        <table id="t" hidden >
+            <tr><th>Question</th><th>Your Answer</th><th>Correct answer</th><th>Points</th></tr>
+            <tr><td>Which animal is best?</td><td id="ya1">Dog</td><td>Dog</td><td id="points1">0</td></tr>
+            <tr><td>What do dogs like to eat?</td><td id="ya2">Dog</td><td>Meat</td><td id="points2">0</td></tr>
+            <tr><td>What is food?</td><td id="ya3">Dog</td><td>Sandwich</td><td id="points3">0</td></tr>
         </table>
+        <div id="needChoice" hidden>Please select an answer before going to the next or previous question</div>
+        <div id="lastQ" hidden>This is the last question you can not go next</div>
+        <p id="finalscore" hidden>SS</p>
 </main>
 <footer>
     <nav>
-        <a id="prev" href="#">LAST</a>
+        <a id="prev" href="#">PREV</a>
         <a id="next" href="#">NEXT</a> 
     </nav>
-    //create a table here 
+    
     
 </footer>
     
